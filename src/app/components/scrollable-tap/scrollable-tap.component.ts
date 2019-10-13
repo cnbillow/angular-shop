@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 interface TopMenu{
   title:string;
   link:string;
 }
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-scrollable-tap',
+  templateUrl: './scrollable-tap.component.html',
+  styleUrls: ['./scrollable-tap.component.css']
 })
-export class AppComponent {
-  title = 'angular商城';
+export class ScrollableTapComponent implements OnInit {
   selectedIndex = -1;
   menus:TopMenu[] = [
     {
@@ -62,7 +60,9 @@ export class AppComponent {
       link:''
     }
   ];
-  handleSelection(index:number){
-    this.selectedIndex = index;
+  constructor() { }
+
+  ngOnInit() {
   }
+
 }
