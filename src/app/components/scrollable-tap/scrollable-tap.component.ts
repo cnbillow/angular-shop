@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-interface TopMenu{
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+export  interface TopMenu{
   title:string;
   link:string;
 }
@@ -10,59 +11,18 @@ interface TopMenu{
 })
 export class ScrollableTapComponent implements OnInit {
   selectedIndex = -1;
-  menus:TopMenu[] = [
-    {
-      title:'热门',
-      link:''
-    },
-    {
-      title:'男装',
-      link:''
-    },
-    {
-      title:'手机',
-      link:''
-    },
-    {
-      title:'食品',
-      link:''
-    },
-    {
-      title:'运动',
-      link:''
-    },
-    {
-      title:'水果',
-      link:''
-    },
-    {
-      title:'包包',
-      link:''
-    },
-    {
-      title:'女装',
-      link:''
-    },
-    {
-      title:'手表',
-      link:''
-    },
-    {
-      title:'家电',
-      link:''
-    },
-    {
-      title:'电脑',
-      link:''
-    },
-    {
-      title:'化妆',
-      link:''
-    }
-  ];
+  @Input() menus:TopMenu[] =[];
+  @Input() backgroundColor = '#fff';
+  @Input() titleActiveColor = 'yellow';
+  @Input() titleColor = 'blue';
+  @Output() tabSelected = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
-
+  handleSelection(index:number){
+    this.selectedIndex = index
+    //将事件发送出去
+    this.tabSelected.emit(this.menus[this.selectedIndex])
+  }
 }

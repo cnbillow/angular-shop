@@ -2,10 +2,13 @@ ul{
     margin: 0;
     padding: 0;
     display: flex;
-    
+    justify-content: space-between;
 }
 ul li{
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 5px;
     padding: 0;
     white-space: nowrap;
@@ -19,6 +22,12 @@ a{
 .active{
     color: red;
 }
-.first{
+/* .first{
     color: aquamarine;
+} */
+.indicator{
+    background-color: brown;
+    height: 2px;
+    width: 2rem;
+    margin-top: 2px;
 }

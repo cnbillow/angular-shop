@@ -1,9 +1,16 @@
-<ul>
+<ul [ngStyle]="{'background-color':backgroundColor}">
         <li *ngFor="let item of menus ;let i = index;let first = first">
           <a href="#" 
             [class.active]="i === selectedIndex"
-            [class.first]="first"
-            (click)="selectedIndex = i"
-            >{{ item.title }}</a>
+           [ngStyle]="{color:i === selectedIndex?titleActiveColor:titleColor}"
+            (click)="handleSelection(i)"
+            >{{ item.title }}
+          
+          </a>
+          <span class="indicator" *ngIf="i === selectedIndex"></span>
         </li>
+        <!-- <ng-template #elseTamp>
+            <span>hello</span>
+        </ng-template> -->
+        
       </ul>
