@@ -16,9 +16,12 @@ export class ScrollableTapComponent implements OnInit {
   @Input() titleActiveColor = 'yellow';
   @Input() titleColor = 'blue';
   @Output() tabSelected = new EventEmitter();
-  constructor() { }
+  constructor() { 
+    console.log('组件构造调用')
+  }
 
   ngOnInit() {
+    console.log('组件初始化')
   }
   handleSelection(index:number){
     this.selectedIndex = index
