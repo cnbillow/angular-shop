@@ -1,7 +1,9 @@
 ul{
     margin: 0;
     padding: 0;
+    overflow: auto;
     display: flex;
+    -webkit-overflow-scrolling: touch;
     justify-content: space-between;
 }
 ul li{
