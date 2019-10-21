@@ -1,0 +1,12 @@
+<!-- <input type="text" [value]="username" (input)="username = $event.target.value"/>
+<span>{{username}}</span> -->
+
+<!-- <input type="text" [(ngModel)]="username"/>
+<span>hello,{{username}}</span> -->
+<!--自定义的-->
+<input type="text"
+  [value]="username"
+  (input)="username = $event.target.value"
+
+/>
+<span>hello,{{username}}</span>

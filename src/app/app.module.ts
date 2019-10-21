@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { ScrollableTapComponent, ImageSliderComponent } from './components';
+import { ScrollableTapComponent, ImageSliderComponent ,HorizonGridComponent} from './components';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ScrollableTapComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    HorizonGridComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
