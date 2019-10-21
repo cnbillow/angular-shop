@@ -1,0 +1,12 @@
+<div *ngIf="tabLink === 'hot' else #other">
+  <app-image-slider [sliders]="imageSliders"></app-image-slider>
+  <app-horizon-grid>
+    <span appGridItem *ngFor="let item of channels">
+      <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" />
+      <span appGridItemTitle="'0.6rem'" class="title">{{item.title}}</span>
+    </span>
+  </app-horizon-grid>
+</div>
+<ng-template #other>
+1111111
+</ng-template>

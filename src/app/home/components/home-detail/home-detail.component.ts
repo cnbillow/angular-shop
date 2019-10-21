@@ -1,28 +1,41 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-//import { Emoji } from '../../decorator';
-export interface Channel{
-  id:number,
-  icon:string,
-  title:string,
-  link:''
-}
-@Component({
-  selector: 'app-horizon-grid',
-  templateUrl: './horizon-grid.component.html',
-  styleUrls: ['./horizon-grid.component.css']
-})
-export class HorizonGridComponent implements OnInit {
-@Input() cols = 8;
-@Input() displayCols = 5;
-sliderMargin = '0';
+import { Component, OnInit } from '@angular/core';
+import { Channel, ImageSlider } from 'src/app/shared/components';
 
-//定义数组
-  channels:Channel[] = [
+@Component({
+  selector: 'app-home-detail',
+  templateUrl: './home-detail.component.html',
+  styleUrls: ['./home-detail.component.css']
+})
+export class HomeDetailComponent implements OnInit {
+  imageSliders: ImageSlider[] = [
     {
-      id:1,
-      title:'限时秒杀',
-      icon:'http://t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png?imageMogr2/format/webp/quality/50',
-      link:''
+      imgUrl: 'https://t00img.yangkeduo.com/goods/images/2019-10-17/2e03fdab-5f3d-43f1-abd4-5262f1387b56.jpg?imageMogr2/quality/70',
+      link: '',
+      caption: ''
+    },
+    {
+      imgUrl: 'https://t16img.yangkeduo.com/pdd_oms/2019-10-14/acba8aef568b455fa517c770cbf38d1f.png?imageMogr2/quality/70',
+      link: '',
+      caption: ''
+    },
+    {
+      imgUrl: 'https://t00img.yangkeduo.com/goods/images/2019-10-16/4773711b-dbab-4fea-99ed-44b5e100e35e.png?imageMogr2/quality/70',
+      link: '',
+      caption: ''
+    },
+    {
+      imgUrl: 'https://t00img.yangkeduo.com/goods/2019-10-17/9c1a790185fedcfd908155093829d6c0.jpeg?imageMogr2/quality/70',
+      link: '',
+      caption: ''
+    }
+  ];
+
+  channels: Channel[] = [
+    {
+      id: 1,
+      title: '限时秒杀',
+      icon: 'http://t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png?imageMogr2/format/webp/quality/50',
+      link: ''
     },
     {
       id: 2,
@@ -78,39 +91,10 @@ sliderMargin = '0';
       icon: 'http://t00img.yangkeduo.com/goods/images/2018-10-28/27e48ad452991eeb8fd0559a0d3b60ff.png?imageMogr2/format/webp/quality/50',
       link: ''
     },
-
-
-
-
   ];
   constructor() { }
 
   ngOnInit() {
   }
 
-  
-  public get scrollable() : boolean {
-    return this.cols > this.displayCols;
-  }
-
-  
-  public get templateRows() : string {
-    return `minmax(auto, max-content)`;
-  }
-
-  
-  public get templateColumns() : string {
-    return `repeat(${this.cols}, calc((100vw - ${this.displayCols *
-      0.4}rem) / ${this.displayCols}))`;
-  }
-
-  public handleScroll(ev){
-    this.sliderMargin = `0 ${(100 * ev.target.scrollLeft) /
-      ev.target.scrollWidth}%`;
-  }
-  
-  
-  
- 
-  
 }

@@ -1,0 +1,10 @@
+<app-scrollable-tap 
+  [menus]='topMenus' 
+  (tabSelected)="handleTabSelected($event)" 
+  [backgroundColor]=""
+  titleActiveColor="red" 
+  titleColor="#ccc">
+</app-scrollable-tap>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>
