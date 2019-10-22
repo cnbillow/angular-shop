@@ -15,7 +15,8 @@ export class HorizonGridComponent implements OnInit {
 @Input() cols = 8;
 @Input() displayCols = 5;
 sliderMargin = '0';
-
+startDate = new Date(2019,10,22);
+futureDate = new Date(2019,10,23);
 //定义数组
   channels:Channel[] = [
     {
@@ -83,12 +84,12 @@ sliderMargin = '0';
 
 
   ];
+  
   constructor() { }
 
   ngOnInit() {
   }
 
-  
   public get scrollable() : boolean {
     return this.cols > this.displayCols;
   }

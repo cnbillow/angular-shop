@@ -1,12 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { HomeService } from './../../services/home.service';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Channel, ImageSlider } from 'src/app/shared/components';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-detail',
   templateUrl: './home-detail.component.html',
   styleUrls: ['./home-detail.component.css']
 })
-export class HomeDetailComponent implements OnInit {
+export class HomeDetailComponent implements OnInit, OnDestroy{
+  constructor(
+    private route:ActivatedRoute,
+    private service:HomeService
+    ) { }
+  selectedTabLink;
   imageSliders: ImageSlider[] = [
     {
       imgUrl: 'https://t00img.yangkeduo.com/goods/images/2019-10-17/2e03fdab-5f3d-43f1-abd4-5262f1387b56.jpg?imageMogr2/quality/70',
@@ -92,9 +100,29 @@ export class HomeDetailComponent implements OnInit {
       link: ''
     },
   ];
-  constructor() { }
+  sub:Subscription;
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params=>{
+      console.log('参数',params);
+      this.selectedTabLink = params.get('tabLink');
+    });
+
+    this.sub = this.route.queryParamMap.subscribe(params=>{
+      console.log('查询参数',params)
+    });
+
+    this.service.getBanners().subscribe(banners=>{
+      this.imageSliders = banners;
+    });
+
+    this.service.getChannels().subscribe(channels=>{
+      this.channels = channels;
+    })
+  }
+
+  ngOnDestroy():void{
+    this.sub.unsubscribe();
   }
 
 }

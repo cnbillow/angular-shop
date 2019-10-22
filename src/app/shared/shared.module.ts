@@ -3,7 +3,12 @@ import { GridItemImageDirective } from './directives/grid-item-image.directive';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScrollableTapComponent, ImageSliderComponent, HorizonGridComponent } from './components';
+import { 
+  ScrollableTapComponent, 
+  ImageSliderComponent, 
+  HorizonGridComponent, 
+  CountDownComponent 
+} from './components';
 import { GridItemDirective } from './directives';
 
 
@@ -15,7 +20,8 @@ import { GridItemDirective } from './directives';
     HorizonGridComponent,
     GridItemDirective,
     GridItemImageDirective,
-    GridItemTitleDirective
+    GridItemTitleDirective,
+    CountDownComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +35,8 @@ import { GridItemDirective } from './directives';
     HorizonGridComponent,
     GridItemDirective,
     GridItemImageDirective,
-    GridItemTitleDirective
+    GridItemTitleDirective,
+    CountDownComponent
   ]
 })
 export class SharedModule { }

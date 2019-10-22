@@ -1,11 +1,14 @@
-
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HomeModule } from './home/home.module';
+import { HomeModule, ParamInterceptor} from './home';
+import { registerLocaleData } from '@angular/common';
+
+import localeZh from '@angular/common/locales/zh-Hans';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { ScrollableTapComponent, ImageSliderComponent ,HorizonGridComponent} from './components';
 
 
@@ -21,9 +24,24 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     SharedModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide:LOCALE_ID,
+      useValue:'zh-Hans'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:ParamInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+    registerLocaleData(localeZh,'zh');
+  }
+}

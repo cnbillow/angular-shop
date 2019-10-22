@@ -1,4 +1,4 @@
-<div *ngIf="tabLink === 'hot' else #other">
+<div *ngIf="selectedTabLink === 'hot' else other">
   <app-image-slider [sliders]="imageSliders"></app-image-slider>
   <app-horizon-grid>
     <span appGridItem *ngFor="let item of channels">
@@ -10,3 +10,5 @@
 <ng-template #other>
 1111111
 </ng-template>
+<a [routerLink]="['grand']">name</a>
+<router-outlet></router-outlet>

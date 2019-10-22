@@ -10,3 +10,8 @@
 ###### 模块的划分
 ###### 注解:返回函数的函数
 ###### 指令:带模板的指令,结构型指令(ngIf,ngFor,ngSwitch),属性型指令(ngClass,ngStyle,ngModel)
+###### 路由
+###### 管道
+###### http
+###### 拦截器
+###### rxjs数据流和管道-->Observable
