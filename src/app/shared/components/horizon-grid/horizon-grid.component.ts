@@ -12,7 +12,7 @@ export interface Channel{
   styleUrls: ['./horizon-grid.component.css']
 })
 export class HorizonGridComponent implements OnInit {
-@Input() cols = 8;
+@Input() cols = 6;
 @Input() displayCols = 5;
 sliderMargin = '0';
 startDate = new Date(2019,10,22);

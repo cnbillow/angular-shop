@@ -1,3 +1,5 @@
+import { MyModule } from './my/my.module';
+import { RecommendModule } from './recommend';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +28,8 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     HomeModule,
     HttpClientModule,
+    RecommendModule,
+    MyModule
   ],
   providers: [
     {

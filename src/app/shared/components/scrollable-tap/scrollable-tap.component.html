@@ -1,6 +1,7 @@
 <ul [ngStyle]="{'background-color':backgroundColor}">
         <li 
-          *ngFor="let item of menus ;let i = index;let first = first"
+          *ngFor="let item of menus ;let i = index;let even = even; let odd = odd"
+           [ngClass]="{ even: even, odd: odd }"
           >
           <a
             [class.active]="i === selectedIndex"
@@ -9,7 +10,7 @@
             >{{ item.title }}
           
           </a>
-          <span class="indicator" *ngIf="i === selectedIndex"></span>
+          <span class="indicator" *ngIf="item.link === selectedTabLink"></span>
         </li>
         <!-- <ng-template #elseTamp>
             <span>hello</span>

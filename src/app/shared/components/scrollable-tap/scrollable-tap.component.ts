@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 export  interface TopMenu{
   id:number;
@@ -8,10 +8,12 @@ export  interface TopMenu{
 @Component({
   selector: 'app-scrollable-tap',
   templateUrl: './scrollable-tap.component.html',
-  styleUrls: ['./scrollable-tap.component.css']
+  styleUrls: ['./scrollable-tap.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollableTapComponent implements OnInit {
-  selectedIndex = -1;
+   selectedIndex = -1;
+  @Input() selectedTabLink: string;
   @Input() menus:TopMenu[] =[];
   @Input() backgroundColor = '#fff';
   @Input() titleActiveColor = 'yellow';
@@ -25,8 +27,9 @@ export class ScrollableTapComponent implements OnInit {
    // console.log('组件初始化')
   }
   handleSelection(index:number){
-    this.selectedIndex = index
-    //将事件发送出去
-    this.tabSelected.emit(this.menus[this.selectedIndex])
+    this.tabSelected.emit(this.menus[index]);
+    // this.selectedIndex = index
+    // //将事件发送出去
+    // this.tabSelected.emit(this.menus[this.selectedIndex])
   }
 }

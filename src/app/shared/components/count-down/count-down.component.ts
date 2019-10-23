@@ -1,5 +1,6 @@
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
+import { takeWhile, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-count-down',
@@ -14,6 +15,24 @@ export class CountDownComponent implements OnInit {
   countDown$ :Observable<string>;
   constructor() { }
   ngOnInit() {
+    this.countDown$ = this.getCountDownObservable(
+      this.startDate,
+      this.futureDate
+    );
+  }
+
+  private getCountDownObservable(startDate:Date,futureDate:Date){
+    return interval(1000).pipe(
+      map(elapse => this.diffInSec(startDate, futureDate) - elapse),
+      takeWhile(gap=>gap >= 0),
+      map(sec=>({
+        day:Math.floor(sec/3600/24),
+        hour:Math.floor((sec/3600)%24),
+        minute:Math.floor((sec/60)%60),
+        second:Math.floor(sec%60)
+      })),
+      map(({hour,minute,second})=>`${hour}:${minute}:${second}`)
+    );
   }
 
   private diffInSec = (start:Date,future:Date):number=>{

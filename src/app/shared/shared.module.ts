@@ -7,7 +7,8 @@ import {
   ScrollableTapComponent, 
   ImageSliderComponent, 
   HorizonGridComponent, 
-  CountDownComponent 
+  CountDownComponent, 
+  FooterComponent
 } from './components';
 import { GridItemDirective } from './directives';
 
@@ -21,7 +22,8 @@ import { GridItemDirective } from './directives';
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    CountDownComponent
+    CountDownComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { GridItemDirective } from './directives';
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    CountDownComponent
+    CountDownComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

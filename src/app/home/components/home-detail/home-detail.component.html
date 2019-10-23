@@ -1,14 +1,15 @@
-<div *ngIf="selectedTabLink === 'hot' else other">
-  <app-image-slider [sliders]="imageSliders"></app-image-slider>
-  <app-horizon-grid>
-    <span appGridItem *ngFor="let item of channels">
-      <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" />
-      <span appGridItemTitle="'0.6rem'" class="title">{{item.title}}</span>
-    </span>
-  </app-horizon-grid>
+<ng-container *ngIf="selectedTabLink as tab">
+  <ng-container *ngIf="tab === 'hot'">
+    <app-image-slider [sliders]="imageSliders"></app-image-slider>
+    <app-horizon-grid>
+      <span appGridItem *ngFor="let item of channels">
+        <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" />
+        <span appGridItemTitle="'0.6rem'" class="title">{{item.title}}</span>
+      </span>
+    </app-horizon-grid>
+  </ng-container>
+</ng-container>
+<!--广告位-->
+<div class="add-container" *ngFor="let list of ad">
+  <img [src]="list.imageUrl" ng-bind="ad.imageUrl" alt="" class="ad-image" />
 </div>
-<ng-template #other>
-1111111
-</ng-template>
-<a [routerLink]="['grand']">name</a>
-<router-outlet></router-outlet>

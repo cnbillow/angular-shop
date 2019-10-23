@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
 import { HomeService } from './../../services/home.service';
 import { Component, OnInit } from '@angular/core';
 import {TopMenu } from 'src/app/shared/components';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-container',
@@ -12,7 +14,8 @@ export class HomeContainerComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private service:HomeService
+    private service:HomeService,
+    private route: ActivatedRoute
 
   ) { }
   title = 'angular商城';
@@ -78,6 +81,7 @@ export class HomeContainerComponent implements OnInit {
       link: 'active'
     }
   ];
+  selectedTabLink$:Observable<string>;
 
   ngOnInit():void {
     //获取导航栏
@@ -85,6 +89,12 @@ export class HomeContainerComponent implements OnInit {
       this.topMenus = tabs;
       console.log('1',this.topMenus);
     });
+    //显示默认值
+    this.selectedTabLink$ = this.route.firstChild.paramMap.pipe(
+      filter(params => params.has('tabLink')),
+      map(params => params.get('tabLink'))
+    );
+    
    
   }
   handleTabSelected(topMenu: TopMenu) {

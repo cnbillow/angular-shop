@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Channel, ImageSlider } from 'src/app/shared/components';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Ad } from 'src/app/shared/domain';
+import { switchMap, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-detail',
@@ -99,7 +101,40 @@ export class HomeDetailComponent implements OnInit, OnDestroy{
       icon: 'http://t00img.yangkeduo.com/goods/images/2018-10-28/27e48ad452991eeb8fd0559a0d3b60ff.png?imageMogr2/format/webp/quality/50',
       link: ''
     },
+    // {
+    //   id: 11,
+    //   title: '现金签到',
+    //   icon: 'http://t00img.yangkeduo.com/goods/images/2019-07-10/04ec5c84906afb5b28b852b167a14ddf.png?imageMogr2/format/webp/quality/50',
+    //   link: ''
+    // },
+    // {
+    //   id: 12,
+    //   title: '金猪赚大钱',
+    //   icon: 'http://t00img.yangkeduo.com/goods/images/2019-02-05/1351e256a0319a6885761b937d06d581.png?imageMogr2/format/webp/quality/50',
+    //   link: ''
+    // },
+    // {
+    //   id: 13,
+    //   title: '电器城',
+    //   icon: 'http://t00img.yangkeduo.com/goods/images/2018-10-28/27e48ad452991eeb8fd0559a0d3b60ff.png?imageMogr2/format/webp/quality/50',
+    //   link: ''
+    // },
   ];
+  ad: Ad[] =[
+    {
+      imageUrl: 'http://t00img.yangkeduo.com/goods/2019-10-22/5fbee985f49da659acc0b123af98822e.gif?imageView2/2/w/1300/q/70/format/webp',
+      link: '',
+    }
+  ];
+  imageUrl: 'http://t00img.yangkeduo.com/goods/2019-10-22/5fbee985f49da659acc0b123af98822e.gif?imageView2/2/w/1300/q/70/format/webp'
+
+  //数据流形式
+  // selectedTabLink$: Observable<string>;
+  // imageSliders$: Observable<ImageSlider[]>;
+  // channels$: Observable<Channel[]>;
+  // ad$: Observable<Ad>;
+
+  
   sub:Subscription;
 
   ngOnInit() {
@@ -118,7 +153,12 @@ export class HomeDetailComponent implements OnInit, OnDestroy{
 
     this.service.getChannels().subscribe(channels=>{
       this.channels = channels;
-    })
+    });
+    // this.ad$ = this.selectedTabLink$.pipe(
+    //   switchMap(tab => this.service.getAdByTab(tab)),
+    //   filter(ads => ads.length > 0),
+    //   map(ads => ads[0])
+    // );
   }
 
   ngOnDestroy():void{
