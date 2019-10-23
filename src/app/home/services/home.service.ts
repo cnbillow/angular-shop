@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ImageSlider, Channel, TopMenu } from 'src/app/shared/components';
-import { Ad } from 'src/app/shared/domain';
+import { Ad, Product } from 'src/app/shared/domain';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,12 @@ constructor(private http:HttpClient) { }
 
   getAdByTab(tab: string) {
     return this.http.get<Ad[]>(`${environment.baseUrl}/ads`, {
+      params: { categories_like: tab }
+    });
+  }
+
+  getProductsByTab(tab: string) {
+    return this.http.get<Product[]>(`${environment.baseUrl}/products`, {
       params: { categories_like: tab }
     });
   }

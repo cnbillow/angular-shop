@@ -13,3 +13,15 @@
 <div class="add-container" *ngFor="let list of ad">
   <img [src]="list.imageUrl" ng-bind="ad.imageUrl" alt="" class="ad-image" />
 </div>
+<app-vertical-grid
+  [itemWidth]="'20rem'"
+>
+  <app-product-card 
+    *ngFor="let product of products"
+    [product]="product"
+    [routerLink]="['/products', product.id]"
+    >
+
+  </app-product-card>
+
+</app-vertical-grid>
