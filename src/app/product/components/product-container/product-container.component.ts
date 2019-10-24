@@ -1,13 +1,16 @@
+import { DialogService } from './../../../dialog/services/dialog.service';
 import { OrderService } from './../../services/order.service';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ProductVariant } from '../../domain';
+import { ProductVariantDialogComponent } from '../product-variant-dialog';
 @Component({
   selector: 'app-product-container',
   templateUrl: './product-container.component.html',
-  styleUrls: ['./product-container.component.css']
+  styleUrls: ['./product-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductContainerComponent implements OnInit {
   //数据源
@@ -45,12 +48,14 @@ export class ProductContainerComponent implements OnInit {
 
      }
    ];
+  subs: Subscription[] = [];
   //数据流
   //variants$: Observable<ProductVariant[]>;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -63,6 +68,40 @@ export class ProductContainerComponent implements OnInit {
     //     this.orderService.getProductVariantsByProductId(productId)  
     //   )
     // )
+  }
+
+  handleDirectBuy(variants: ProductVariant[]) { }
+  handleGroupBuy(variants: ProductVariant[]){
+    alert('111111');
+    const top = 40;
+    const formSubmitted = new EventEmitter();
+    this.subs.push(
+      formSubmitted.subscribe(ev => {
+        this.dialogService.saveData(ev);
+        this.router.navigate(['/orders', 'confirm']);
+      })
+    );
+    const selected = new EventEmitter<number>();
+    this.subs.push(
+      selected.subscribe(idx => {
+        console.log(idx);
+        this.selectedIndex = idx;
+      })
+    );
+    this.dialogService.open(ProductVariantDialogComponent, {
+      // 如果 key 和 value 是一个名字，直接写就可以
+      inputs: {
+        variants,
+        selectedVariantIndex: this.selectedIndex
+      },
+      outputs: { formSubmitted, selected },
+      position: {
+        top: `${top}%`,
+        left: '50%',
+        width: '100%',
+        height: `${100 - top}%`
+      }
+    });
   }
 
 }

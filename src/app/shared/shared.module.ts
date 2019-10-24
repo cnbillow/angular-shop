@@ -1,3 +1,4 @@
+import { DialogModule } from './../dialog';
 import {
   GridItemDirective,
   GridItemImageDirective,
@@ -59,7 +60,8 @@ import {
     TagDirective,
     AvatarDirective,
     ProductTileComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    DialogModule
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,4 @@
+import { DialogService } from './dialog/services/dialog.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -15,7 +16,10 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit{
   selectedIndex$:Observable<number>;
-  constructor(private router:Router){}
+  constructor(
+    private router:Router,
+    private dialogService : DialogService
+    ){}
   ngOnInit():void{
     //监听路由事件
     this.selectedIndex$ = this.router.events.pipe(
@@ -40,5 +44,8 @@ export class AppComponent implements OnInit{
           : tab === 'my'
             ? 4
             : 0;
+  }
+  removeDialog(){
+    this.dialogService.close();
   }
 }
