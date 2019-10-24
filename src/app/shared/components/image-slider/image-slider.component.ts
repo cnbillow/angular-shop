@@ -24,6 +24,10 @@ export class ImageSliderComponent implements OnInit {
    
   }
   ngAfterViewInit():void{
+    //判断小于0时轮播
+    if (this.intervalBySeconds <= 0) {
+      return;
+    }
       this.intervalId = setInterval(()=>{
        // let i = 0;
         this.rd2.setProperty(

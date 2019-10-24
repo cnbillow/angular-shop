@@ -24,7 +24,7 @@
 .product-title {
   grid-area: title;
  font-size: 0.8rem;
- padding-top: 5px;
+ /* padding-top: 5px; */
 }
 .product-tags {
   grid-area: tags;

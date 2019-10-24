@@ -16,7 +16,8 @@ import {
   FooterComponent,
   VerticalGridComponent,
   ProductCardComponent,
-  ProductTileComponent
+  ProductTileComponent,
+  BackButtonComponent
 } from './components';
 
 
@@ -35,7 +36,8 @@ import {
     ProductCardComponent,
     TagDirective,
     AvatarDirective,
-    ProductTileComponent
+    ProductTileComponent,
+    BackButtonComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import {
     ProductCardComponent,
     TagDirective,
     AvatarDirective,
-    ProductTileComponent
+    ProductTileComponent,
+    BackButtonComponent
   ]
 })
 export class SharedModule { }

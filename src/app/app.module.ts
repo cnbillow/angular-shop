@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 
 import localeZh from '@angular/common/locales/zh-Hans';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProductModule } from './product';
 // import { ScrollableTapComponent, ImageSliderComponent ,HorizonGridComponent} from './components';
 
 
@@ -29,7 +30,8 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
     HomeModule,
     HttpClientModule,
     RecommendModule,
-    MyModule
+    MyModule,
+    ProductModule
   ],
   providers: [
     {

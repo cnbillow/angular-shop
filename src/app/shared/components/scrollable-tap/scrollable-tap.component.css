@@ -5,6 +5,7 @@ ul{
     display: flex;
     -webkit-overflow-scrolling: touch;
     justify-content: space-between;
+    /* height: 35px; */
 }
 ul li{
     display: flex;
@@ -14,6 +15,8 @@ ul li{
     margin: 0 5px;
     padding: 0;
     white-space: nowrap;
+    /* height: 35px;
+    line-height: 30px; */
 }
 a{
     text-decoration: none;
