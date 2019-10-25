@@ -1,13 +1,10 @@
-import { DialogService } from './dialog/services/dialog.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Component, OnInit } from '@angular/core';
 import { TabItem } from './shared/components';
 import { filter, map } from 'rxjs/operators';
-// import { TopMenu, ImageSlider } from './components';
-// import { Channel } from './shared/components';
-
+import { DialogService } from './dialog';
 
 @Component({
   selector: 'app-root',

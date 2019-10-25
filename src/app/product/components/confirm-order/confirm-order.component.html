@@ -1,0 +1,58 @@
+<div class="container" *ngIf="item$ as item">
+  <div class="title-bar">
+    <app-back-button [float]="false"></app-back-button>
+    <span>确认订单</span>
+  </div>
+  <div class="conten">
+    <div class="address-bar">
+      <img src="assets/icons/location.png" alt="" class="location" />
+      <div class="name-and-mobile">
+        <span class="name">jingjing</span>
+        <span class="mobile">178237489364</span>
+      </div>
+      <div class="address">
+        xxxxxxxx区某某路111号不知所云大厦123
+      </div>
+      <img src="assets/icons/navigate_next.png" alt="" class="more" />
+    </div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <div class="shop">
+      <img src="assets/icons/brand.png" alt=""/>
+      <span>傻啦吧唧的</span>
+    </div>
+    <div class="product-bar">
+      <img class="product-image"  src="http://t00img.yangkeduo.com/goods/images/images/2019-09-12/f55914f254d802b9bcfbd4af0e56073d.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80" alt=""/>
+      <!-- <img [src]="item.variant.productVariantImages[0].imgUrl" alt="" class="product-image" /> -->
+      <span class="product-name">oppo闪充数据线r11 r9 r15快充r9s r11sp r7s A59s安卓充电线器</span>
+      <div class="product-spec">款式:款式1{{item.variant.name}}</div>
+      <div class="product-price">
+        <span>$1.2{{ item.variant.price | currency: 'CNY' }}/件</span>
+        <span class="price-condition">退货包运费</span>
+      </div>
+    </div>
+    <app-product-amount 
+      [count]="1"
+      (amountChange)="handleAmountChange($event)">
+    </app-product-amount>
+    <app-payment [payments]="payments"></app-payment>
+  </div>
+  <div class="toolbar">
+    <div class="total-price">
+      <span>实付款：</span>
+      <span class="price-section">{{
+          totalPrice$ | async | currency: 'CNY'
+        }}</span>
+      <span class="price-condition">&nbsp;免邮费</span>
+    </div>
+    <div class="pay" (click)="handlePay()">
+      <div>立即支付</div>
+    </div>
+  </div>
+</div>

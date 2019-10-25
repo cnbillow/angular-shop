@@ -72,22 +72,22 @@ export class ProductContainerComponent implements OnInit {
 
   handleDirectBuy(variants: ProductVariant[]) { }
   handleGroupBuy(variants: ProductVariant[]){
-    alert('111111');
+   // alert('111111');
     const top = 40;
     const formSubmitted = new EventEmitter();
-    this.subs.push(
+    // this.subs.push(
       formSubmitted.subscribe(ev => {
         this.dialogService.saveData(ev);
         this.router.navigate(['/orders', 'confirm']);
       })
-    );
+   // );
     const selected = new EventEmitter<number>();
-    this.subs.push(
+    // this.subs.push(
       selected.subscribe(idx => {
         console.log(idx);
         this.selectedIndex = idx;
       })
-    );
+   // );
     this.dialogService.open(ProductVariantDialogComponent, {
       // 如果 key 和 value 是一个名字，直接写就可以
       inputs: {
